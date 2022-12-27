@@ -16,6 +16,9 @@ make maps                       # build maps in src directory
 
 # using graphviz to generate svg
 dot -Tsvg dotgraph.dot > output.svg
+
+# use nop to validate graphs
+- https://graphviz.org/docs/layouts/nop/
 ```
 
 # reference

@@ -118,7 +118,6 @@ readme:													## show information and notes
 	@touch README.md
 	@cat README.md
 
-
 ##@ Menu
 
 # core commands
@@ -127,3 +126,12 @@ maps:														## build maps to output folder
 	$(call func_print_header,develop local)
 	# building maps
 	dot -Tsvg dotgraph.dot > output.svg
+
+website:												## build website to output folder
+	$(call func_print_header,develop local)
+	rm -fr docs
+	# build and publish website
+	pushd src/website
+	hugo
+	popd
+	cp -r src/website/public docs

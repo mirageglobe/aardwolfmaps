@@ -12,6 +12,7 @@ to start, see `src/example.dot` and `Makefile`
 ``` console
 # using the makefile
 make                            # show make menu
+make website                    # build website in src directory
 make maps                       # build maps in src directory
 
 # using graphviz to generate svg

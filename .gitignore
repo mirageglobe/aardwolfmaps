@@ -1,5 +1,6 @@
 
-# https://github.com/github/gitignore/blob/main/Global/Vim.gitignore
+# github gitignore https://github.com/github/gitignore/blob/main/Global/Vim.gitignore
+#
 # Swap
 [._]*.s[a-v][a-z]
 !*.svg  # comment out if you don't need vector files
@@ -19,3 +20,13 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+
+# end github gitignore
+
+# Created by https://www.toptal.com/developers/gitignore/api/homebrew
+# Edit at https://www.toptal.com/developers/gitignore?templates=homebrew
+
+### Homebrew ###
+Brewfile.lock.json
+
+# End of https://www.toptal.com/developers/gitignore/api/homebrew

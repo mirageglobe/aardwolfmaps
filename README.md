@@ -15,13 +15,22 @@ make                            # show make menu
 make website                    # build website in src directory
 make maps                       # build maps in src directory
 
-# using graphviz to generate svg
+# graphviz generate svg
 dot -Tsvg dotgraph.dot > output.svg
 
-# use nop to validate graphs
+# graphviz use nop to validate graphs
 - https://graphviz.org/docs/layouts/nop/
+
+# hugo generate new posts
+cd src/website
+hugo new posts/my-first-post.md
+
+# hugo add new theme
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke themes/ananke
 ```
 
 # reference
 
 - <https://graphviz.org/doc/info/command.html>
+- <https://gohugo.io/getting-started/quick-start/>
+- <https://kroki.io/>

@@ -125,7 +125,11 @@ readme:													## show information and notes
 maps:														## build maps to output folder
 	$(call func_print_header,develop local)
 	# building maps
-	dot -Tsvg dotgraph.dot > output.svg
+	# dot -Tsvg dotgraph.dot > output.svg
+	pushd src/maps
+	mmdc -i example.mmd -o example-mmd.svg
+	dot -Tsvg example.dot > example-dot.svg
+	popd
 
 website:												## build website to output folder
 	$(call func_print_header,develop local)

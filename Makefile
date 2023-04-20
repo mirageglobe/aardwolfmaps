@@ -123,7 +123,6 @@ readme:													## show information and notes
 # core commands
 
 maps:														## build maps to output folder
-	$(call func_print_header,develop local)
 	# building maps
 	# dot -Tsvg dotgraph.dot > output.svg
 	pushd src/maps
@@ -132,10 +131,15 @@ maps:														## build maps to output folder
 	popd
 
 website:												## build website to output folder
-	$(call func_print_header,develop local)
+	# remove old website files
 	rm -fr docs
 	# build and publish website
 	pushd src/website
 	hugo
 	popd
 	cp -r src/website/public docs
+
+website-develop:								## run hugo hot reload locally for development
+	# develop website locally
+	pushd src/website
+	hugo server --disableFastRender

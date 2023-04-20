@@ -126,8 +126,14 @@ maps:														## build maps to output folder
 	# building maps
 	# dot -Tsvg dotgraph.dot > output.svg
 	pushd src/maps
+	# generate using mermaid svg
 	mmdc -i example.mmd -o example-mmd.svg
+	# generate using graphviz svg
 	dot -Tsvg example.dot > example-dot.svg
+	# generate using plantuml svg
+	plantuml -tsvg *.puml
+	# generate using plantuml ascii
+	plantuml -ttxt example.puml
 	popd
 
 website:												## build website to output folder

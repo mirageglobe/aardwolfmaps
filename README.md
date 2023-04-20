@@ -32,5 +32,7 @@ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke themes/an
 # reference
 
 - <https://graphviz.org/doc/info/command.html>
+- <https://plantuml-documentation.readthedocs.io/en/latest/command_line_reference.html>
 - <https://gohugo.io/getting-started/quick-start/>
 - <https://kroki.io/>
+- <https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html>

@@ -9,7 +9,7 @@ to start, see `src/example.dot` and `Makefile`
 
 # usage
 
-``` console
+``` text
 # using the makefile
 make                            # show make menu
 make website                    # build website in src directory
@@ -27,6 +27,18 @@ hugo new posts/my-first-post.md
 
 # hugo add new theme
 git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke themes/ananke
+```
+
+# notes
+
+``` text
+# getting room number in aardwolf
+- gmcp give vnum for room if it's not maze
+- if it's maze then the vnum is -1
+- check how aardmush uses gmcphandler plugin It has great notes in it (the plugin)
+fiendish has done all that for mapper etc through that
+- maybe you can fork out something through reading what fiendish has done. Basically
+everything is there already. Just integrating it all to your own client and how is your problem
 ```
 
 # reference

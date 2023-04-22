@@ -5,31 +5,6 @@
 
 # this is a make example and doubles as dot-case installer script
 
-# --------------------------------------------------------------- references ---
-#
-# - https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html
-# - https://tech.davis-hansson.com/p/make/
-# - https://www.gnu.org/software/make/manual/html_node/One-Shell.html
-# - https://stackoverflow.com/questions/32153034/oneshell-not-working-properly-in-makefile
-# - https://makefiletutorial.com/
-
-# -------------------------------------------------------------------- notes ---
-#
-# makefile
-# - use "$$" for escaping variable
-# - use "-" to ignore errors (make)
-# - use "@" to not print the command
-# - $(MAKEFILE_LIST) is an environment variable (name of Makefile) thats available during Make.
-# - phony is used to make sure there is no similar file(s) such as <target> that cause the make recipe not to work
-# - oneshell not POSIX standard; supported make > 3.82; use gmake rather than make to ensure oneshell works
-#
-# awk
-# - FS = awks field separator. use it in the beginning of execution. i.e. FS = ","
-#
-# npm semver
-# - patch use @semver $$(git describe --tags --abbrev=0) -i patch
-# - minor use @semver $$(git describe --tags --abbrev=0) -i minor
-
 ################################################################################
 # ============================================================ configuration = #
 ################################################################################
@@ -43,32 +18,34 @@ MENU := all clean test
 MENU += help readme
 
 # main
-MENU += maps
+MENU += maps website website-develop
 
 # load phony
 .PHONY: $(MENU)
+
+# ------------------------------------------------------------ check version ---
+
+# enforce bash version 4+
+ifeq ($(origin .RECIPEPREFIX), undefined)
+  $(error this make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later. use `brew install make` and run `gmake`)
+endif
 
 # ------------------------------------------------------------ settings ----- #
 
 # set default target
 .DEFAULT_GOAL := help
 
-# set fast fail so targets fail on error
-# .SHELLFLAGS := -eu -o pipefail -c
-
 # set default shell to run makefile
-# SHELL := /bin/bash									# system default
-# SHELL := /usr/local/bin/bash				# homebrew default bash
+# SHELL := /bin/bash
+# SHELL := /usr/local/bin/bash
 
-# sets all lines in the recipe to be passed in a single shell invocation
+# single shell invocation
 .ONESHELL:
 
-# ------------------------------------------------------------ check version ---
-
-# enforce make 4+
-# ifeq ($(origin .RECIPEPREFIX), undefined)
-#   $(error this make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later. use `brew install make` and run `gmake`)
-# endif
+# add shell flags
+# set fast fail so targets fail on error
+.SHELLFLAGS := -eu -o pipefail -c
+# .SHELLFLAGS = -e
 
 # ---------------------------------------------------- environment variables ---
 
@@ -123,17 +100,19 @@ readme:													## show information and notes
 # core commands
 
 maps:														## build maps to output folder
+	# check bash version
+	# bash --version
 	# building maps
 	# dot -Tsvg dotgraph.dot > output.svg
 	pushd src/maps
 	# generate using mermaid svg
-	mmdc -i example.mmd -o example-mmd.svg
+	# mmdc -i example.mmd -o example-mmd.svg
 	# generate using graphviz svg
-	dot -Tsvg example.dot > example-dot.svg
+	# dot -Tsvg example.dot > example-dot.svg
 	# generate using plantuml svg
 	plantuml -tsvg *.puml
 	# generate using plantuml ascii
-	plantuml -ttxt example.puml
+	# plantuml -ttxt example.puml
 	popd
 
 website:												## build website to output folder
